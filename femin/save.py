@@ -1,5 +1,6 @@
 import webview
 import h5py
+import subprocess
 from . import geo
 from . import hist_data
 from . import gen
@@ -14,7 +15,10 @@ def save(name):
 	# Geometry Group
 	geo_grp = h5.create_group("geo")
 	for key in geo.pellet.keys():
-		geo_grp.create_dataset("pellet_" + key, data=geo.pellet[key], dtype='d')
+		if key == "obj_seg":
+			geo_grp.create_dataset("pellet_" + key, data=geo.pellet[key], dtype='i')
+		else:
+			geo_grp.create_dataset("pellet_" + key, data=geo.pellet[key], dtype='d')
 
 	for key in geo.clad.keys():
 		if key == "mat":
@@ -44,13 +48,22 @@ def save(name):
 
 	h5.close()
 
+
 def preview():
 	gen.gen_for_preview()
 	#print(__name__)
 	if __name__ == 'femin.save':
 		# Create a standard webview window
-		window = webview.create_window('Simple browser', 'femin/view/index.html', easy_drag=False, text_select=True, resizable=False)
+		window = webview.create_window('Simple browser', 'femin/view/index.html', easy_drag=False, text_select=True, resizable=False, min_size=(1200, 600))
 		webview.start()
+
 
 def generate(file_name):
 	gen.gen_for_femaxi(file_name)
+
+
+def run_femaxi6():
+	batch_file = "FEM6.exe"
+	print("Simulating..........")
+	subprocess.run([batch_file])
+	print("Finish")

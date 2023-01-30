@@ -34,26 +34,7 @@ function isi_tabel(arr, keys, table) {
 		}
 	}
 }
-/*
-function isi_tabel_hist(arr, keys, table) {
-	let cell
-  for (varpf in keys){
-    console.log(keys.at(-1).at(-1))
-  }
-	for (let i = 0; i < arr[keys[0]].length; i++) {
-		row = table.insertRow(i+1);
-		cell = row.insertCell(0)
-		cell.style.textAlign = "center";
-		//cell1.className = "alignRight"
-		cell.innerHTML = (i+1);
-		for (let j = 0; j < keys.length; j++) {
-			cell = row.insertCell(j+1)
-			cell.style.textAlign = "center";
-			cell.innerHTML = arr[keys[j]][i]
-		}
-	}
-}
-*/
+
 function tableHist(hist_arr, hist_keys, ax_arr, ax_keys, hist_table){
   let valueHist = [[],[],[],[],[],[],[],[],[],[]];
   for (let keys = 0; keys < hist_keys.length; keys++){
@@ -65,8 +46,6 @@ function tableHist(hist_arr, hist_keys, ax_arr, ax_keys, hist_table){
         break;
       case "burnup":
         for (let bvalue = 0; bvalue < hist_arr[hist_keys[keys]].length; bvalue++){
-          console.log(bvalue)
-          console.log(hist_arr[hist_keys[keys]].length)
           valueHist[1].push(hist_arr[hist_keys[keys]][bvalue]);
         }
         break;
@@ -118,16 +97,45 @@ function tableHist(hist_arr, hist_keys, ax_arr, ax_keys, hist_table){
     row = hist_table.insertRow(i+1);
     for (let j = 0; j < 10; j++){
       cell = row.insertCell(j)
-      cell.style.textAlign = "center";
-      
       if (valueHist[j][i] === undefined){
+        cell.style.textAlign = "center";
         cell.innerHTML = "--"
       } else {
+        cell.style.textAlign = "right";
         cell.innerHTML = valueHist[j][i]
       }
     }
   }
-  return valueHist
 }
 
+function table_pwrprofile(ax_keys, ax, table_pwr){
+  row = table_pwr.insertRow(1)
+  for(let k=0; k< ax_keys.length;k++){
+    cell = row.insertCell(k);
+    cell.style.textAlign = "center";
+    cell.innerHTML = (k+1)
+  }
+  for(let j = 0; j < ax[ax_keys[0]].length; j++){
+    row = table_pwr.insertRow(j+2);
+    cell = row.insertCell(0);
+    cell.style.textAlign = "center";
+    cell.innerHTML = (j+1);
+    for(let i=0; i < (ax_keys.length); i++){
+      cell = row.insertCell(i+1);
+      cell.style.textAlign = "right";
+      cell.innerHTML = ax[ax_keys[i]][j];
+    } 
+  }
+  row = table_pwr.insertRow(ax[ax_keys[0].length + 2])
+  cell = row.insertCell(0);
+  cell.style.textAlign = "center";
+  cell.innerHTML = "Avg Segment"
+  for(let i=0; i<ax_keys.length; i++){
+    cell = row.insertCell(i+1);
+    cell.style.textAlign = "right";
+    decimal = ax[ax_keys[i]].reduce((a, b) => a.length > b.length ? a : b);
+    console.log(decimal.length);
+    cell.innerHTML = ((ax[ax_keys[i]].map(Number).reduce((a,b) => a+b)) / ax[ax_keys[i]].length).toFixed(decimal.length-2);
+  }
+}
 document.querySelector(".active").click();

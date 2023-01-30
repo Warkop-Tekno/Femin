@@ -1,0 +1,444 @@
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+                                          NAMELIST PARAMETERS(1)
+                                         ------------------------
+          INPUT OPTION
+         ---------------
+    PARAMETER                              DESCRIPTION                             DIMENSION           VALUE
+   -----------                            -------------                           -----------         -------
+
+ -------------------------------------------
+  (1) OPTION FOR INPUT
+ -------------------------------------------
+     IBUNP       OPTION FOR BURNUP UNIT (=0;MWD/TUO2 ,=1;MWD/TU, =2;GJ/KGU)           -
+     IDAY        OPTION FOR TIME UNIT (=0;HR,=1;DAY )                                 -
+     IFLX        OPTION TO GIVE RADIAL FLUX DEPRESSION PROFILE                        -
+     IRH         POWER INCREMENT WIDTH FOR ATTENDED SEGMENT                           -
+     TMCHG       MAGNIFICATION ON TIME BY MULTIPLYING THE FACTOR (1+TMCHG)            -
+     PWCHG       MAGNIFICATION ON LHR BY MULTIPLYING THE FACTOR (1+PWCHG)             -
+     IFSNT       OPTION TO GIVE FAST NEUTRON FLUX                                     -
+     FAIW        FAST NEUTRON FLUX (IN CASE OF IFSNT=1)                           N/CM2-SEC
+     FROD        MAGNIFICATION ON FAST NEUTRON FLUX (FOR RODBURN OUTPUT)              -
+     ICLMAS      OPTION FOR COOLANT FLOW (=0;VELOCITY(M/S),=1;FLUX(KG/CM2-S))         -
+     SELHST      SELECTING FLAG FOR HISTORY DATA (=1;TIME,=2;LHR,=3;BURNUP)           -
+     STTHST      THE START OF TIME(BURNUP) FOR MAGNIFICATION ON TIME,LHR,BURNUP       -
+     ENDHST      THE END OF TIME(BURNUP) FOR MAGNIFICATION ON TIME,LHR,BURNUP         -
+     FACHST      MAGNIFICATION ON TIME,LHR,BURNUP BY MULTIPLYING THE FACTOR           -
+     ISEC        TIME UNIT USES SECOND BETWEEN ISEC(1,N) AND ISEC(2,N) (N.LE.5)       -
+
+ -------------------------------------------
+  (2) OPTION FOR CALCULATION
+ -------------------------------------------
+     INPCK       INPUT DATA CHECK OPTION (=0;CALCULATION ,=1;INPUT DATA CHECK)        -
+     ICK1        FEM MECHANICAL CALCULATION OPTION (=0;CALCULATE ,=1;NOT CALCULATE)   -
+     ICHI        ELASTIC CALCULATION OPTION (LOCAL MODEL) (=0;NORMAL ,=1;ELASTIC)     -
+     IELAST      ELASTIC CALCULATION OPTION (WHOLE ROD MODEL) (=0;NORMAL ,=1;ELASTIC) -
+     MPP         THERMAL CALCULATION OPTION (=0;STANDARD ,=1;SIMPLE)                  -
+     IFEMRD      FEM MECHANICAL CALCULATION OPTION(=0;LOCAL MODEL,=1;WHOLE ROD MODEL) -
+     TLIM        LIMITING TIME FOR CPU                                               SEC
+     IST         OPTION FOR GAP GAS MODEL (=0;WHOLE MIXING ,=1:GAS FLOW MODEL)        -
+     ZR          ZIRCONIUM LINER THICKNESS                                           CM
+     IZERO       CALCULATION OPTION FOR ZERO POWER (=0:NO CALC,>0:DEFINED TEMP)       -
+     TZERO       TEMPERATURE AT ZERO POWER (IZERO=4)                                  K
+
+ -------------------------------------------
+  (3) CONDITION FOR CALCULATION
+ -------------------------------------------
+     ITIME       NUMBER OF HISTORY POINTS CHANGING PLENUM GAS PRESSURE                -
+     GASPRN      PLENUM GAS PRESSURE AT THE HISTORY POINT                            PA
+     PLENM       PLENUM GAS VOLUME AT THE HISTORY POINT                              CM**3
+     GMIXN       PLENUM GAS COMPOSITION AT THE HISTORY POINT (HE,N2,KR,XE)            -
+     IOPT1       BOTTOM PLENUM OPTION (=0;NO BOTTOM ,=1;BOTTOM PLENUM IS PRESENT)     -
+     XKSU        ELASTIC CONSTANT OF UPPER PLENUM                                    N/M
+     ALSU        THERMAL EXPANSION RATIO OF UPPER PLENUM SPRING                      1/K
+     XKSL        ELASTIC CONSTANT OF LOWER PLENUM                                    N/M
+     ALSL        THERMAL EXPANSION RATIO OF LOWER PLENUM SPRING                      1/K
+     AMU         FRICTION COEFFICIENT BETWEEN PELLET AND CLADDING                     -
+     DE          EQUIVALENT HYDRAULIC DIAMETER                                       CM
+     FAREA       FLOW AREA OF COOLANT                                                CM**2
+     PITCH       FUEL ROD PITCH                                                      CM
+     NRCZR       NUMBER OF RADIAL SEGMENTS OF CLAD ZIRCALOY                           -
+     NRCOX       NUMBER OF RADIAL SEGMENTS OF CLAD OXIDE LAYER                        -
+     DTPL        DIFFERENCE BETWEEN PLENUM TEMPERATURE AND COOLANT TEMP.              -
+     TROOM       ROOM TEMPERATURE                                                     K
+     LBU         BURNUP DEPENDENT MATERIAL MODEL OPTION (=0;AVERAGE BU,=1;LOCAL BU)   -
+     CSTEM       CLADDIND OUTER SURFACE TEMPERATURE                                   K
+     DCNL        CHANNEL OUTER DIAMETER                                              CM
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+                                          NAMELIST PARAMETERS(2)
+                                         ------------------------
+          INPUT OPTION
+         ---------------
+    PARAMETER                          DESCRIPTION                               DIMENSION          VALUE
+   -----------                        -------------                             -----------        -------
+
+ -------------------------------------------
+   (1) CONTROLE OF TIME STEP
+ -------------------------------------------
+     IAUTO      OPTION FOR AUTOMATIC CONTROL OF TIME STEP                           -
+     DPXX       UPPER LIMIT OF POWER DEPENDENT TIME STEP                           W/CM
+     DPBU       UPPER LIMIT OF BURNUP DEPENDENT TIME STEP                        MWD/TUO2
+     IPH        POWER INCREMENT WIDTH FOR ATTENDED SEGMENT                          -
+                 (=0;IFEM SEGMENT ,=1;MAXIMUM POWER SEGMENT)
+     EFCOEF     CREEP DEPENDENT TIME STEP CONTROL PARAMETER                         -
+     LCMAX      MAXIMUM NUMBER OF JUDGEMENTS OF PELLET-CLAD CONTACT STATE           -
+     LMAX       NUMBER OF ITERATION OF NEWTON-LAPHSON METHOD                        -
+     ITIMY      TIME STEP CONTROLE OPTION FOR ELASTO-PLASTIC ANALYSIS               -
+     FAC        TIME STEP CONTROLE FACTOR                                           -
+
+ -----------------------------------------
+   (2) OPTION FOR THERMAL CONDUCTANCE
+ -----------------------------------------
+     IPTHCN     OPTION FOR PELLET THERMAL CONDUCTIVITY                              -
+     PU         WEIGHT FRACTION WHEN MOX>0 OR IPTHCN=15                             -
+     PUFIS      WEIGHT FRACTION OF PU-FISSILE WHEN MOX>0                            -
+     Y          VALUE OF Y FOR MO2-Y                                                -
+     IGD        IGD ADOPTS UO2-GD2O3 THERMAL CONDUCTIVITY FORMULA                   -
+     GD         DENSITY OF GD2O3 (WEIGHT FRACTION)                                  -
+     FPTH       FACTOR MAGNIFING OF PELLET THERMAL CONDUCTIVITY                     -
+     IPRO       OPTION FOR PELLET POROSITY CHANGE MODEL                             -
+     LT         LATTICE PARAMETER (IPTHCN=15)                                       -
+     CBU        FACTOR FOR THE BURNUP OF PELLET THERMAL CONDUCTIVITY (IPTHCN=11)    -
+     CGD        FACTOR FOR GD2O3 DENSITY OF PELLET THERMAL CONDUCTIVITY (IPTHCN=11) -
+     SLB        FACTOR MAGNIFING OF PELLET THERMAL CONDUCTIVITY (IPTHCN=12)         -
+
+  -----------------------------------------
+   (3) OPTION FOR THERMAL EXPANSION
+ -----------------------------------------
+     IPTHEX     OPTION FOR FORMULA OF PELLET THERMAL EXPANSION                      -
+     ICATHX     OPTION FOR FORMULA OF CLAD THERMAL EXPANSION                        -
+     ATHEX      ZIRCALOY THERMAL EXPANSION (FOR AXIAL EXPANSION )                   -
+     RTHEX      ZIRCALOY THERMAL EXPANSION (FOR RADIAL EXPANSION )                  -
+
+ -----------------------------------------
+   (4) OPTION FOR CREEP
+ -----------------------------------------
+     FCRFAC     MAGNIFICATION ON PELLET CREEP FORMULA (MECHANICAL MODEL)            -
+     TCS        CUT OFF VALUE OF TEMP. WITHIN PELLET CREEP CAL.(MECHANICAL MODEL)   K
+     TFCRFC     MAGNIFICATION ON PELLET CREEP FORMULA (THERMAL MODEL)               -
+     TCRMX      CUT OFF VALUE OF TEMP. WITHIN PELLET CREEP CAL.(THERMAL MODEL)      K
+     CRFAC      MAGNIFICATION ON CLAD CREEP STRAIN RATE (MECHANICAL MODEL)          -
+     TCCRFC     MAGNIFICATION ON CLAD CREEP STRAIN RATE (THERMAL MODEL)             -
+     FAIMAX     CUT OFF VALUE OF FAST NEWTRON FLUX WITHIN CLAD CREEP CAL.         N/CM2/S
+     IPUGH      IPUGH=1 TAKES INTO ACCOUNT OF PUGH-S TURN OVER IN CLAD-CREEP CAL.   -
+     IPCRP      OPTION FOR FORMULA OF CLAD CREEP STRAIN RATE (PELLET)               -
+     CRPEQ      OPTION FOR FORMULA OF CLAD CREEP STRAIN RATE (ZIRCALOY)             -
+     HTCRP      OPTION FOR FORMULA OF CLAD CREEP STRAIN RATE (ZIRCALOY)             -
+
+ ----------------------------------------------
+   (5) OPTION FOR PELLET CRACK, AND RELOCATION
+ ----------------------------------------------
+     XRELOC  RELOCATION PARAMETER IN THERMAL CALCULATION                            -
+     FRELOC  MECHANICAL RELOCATION PARAMETER                                        -
+     EPSRLZ  AXIAL RELOCATION PARAMETER                                             -
+     FACR    OPTION FOR PELLET STIFFNESS RECOVERY IN RADIAL DIRECTION               -
+     FACZ    OPTION FOR PELLET STIFFNESS RECOVERY IN AXIAL DIRECTION                -
+     BUMIN   BURNUP AT WHICH PELLET RELOCATION STARTS                             MWD/TU
+     BUMAX   BURNUP AT WHICH PELLET RELOCATION CEASES                             MWD/TU
+     IURS    OPTION FOR PELLET GAS BUBBLE SWELLING CALCULATION                      -
+     IYNG    PELLET CRACK MODEL OPTION (MECHANICAL MODEL)                           -
+     ECRAC3  ELASTIC MODULUS OF PELLET AT THE TIME OF PERFECT CRACK (MECH. MODEL)  PA
+     EFAC    MAGNIFICATION ON ELASTIC MODULUS OF PELLET (MECHANICAL MODEL)          -
+
+ -----------------------------------------
+   (6) OPTION FOR PELLET DENSIFICATION
+ -----------------------------------------
+     IDENSF     OPTION FOR FORMULA OF PELLET DESIFICATION                           -
+     DMAX       MAXIMUM VOLUME SHRINKAGE RATIO BY DESIFICATION                      %
+     SBU        BURNUP AT WHICH DESIFICATION IS 90% COMPLETED (IDENSF = 0)       MWD/TU
+     TDNSF      SINTERING TEMPERATURE                                               K
+     GG         GRAIN SIZE AFTER HEAT TREATMENT                                     M
+     GGO        INITIAL GRAIN SIZE (IDENSF = 3)                                     M
+     SITIM      TIME OF HEAT TREATMENT (IDENSF = 3)                                HR
+     ADST       AJUST. FACT. (IDENSF = 4)                                           -
+
+ -----------------------------------------
+  (7) OPTION FOR PELLET SWELLING MODEL
+ -----------------------------------------
+    IFSWEL  OPTION FOR PELLET SWELLING MODEL                                        -
+    STFCP   CONTACT PRESSURE LIMIT BEYOND WHICH GAS BUBBLE CANNOT OCCUR(MECHANICAL) PA
+    SPCON   CONTACT PRESSURE LIMIT BEYOND WHICH GAS BUBBLE CANNOT OCCUR(THERMAL)    PA
+    FACP    FACTOR MAGNIFING CONTACT PRESSURE AFFECTING BUBBLE OUTER PRESSURE       -
+    BG      NUMBER OF ATOMS IN A BOUNDARY BUBBLE                              ATOMS/BUBBLE
+    A1      FACTOR FOR PELLET VOLUMETRIC SWELLING (IFSWEL=4)                        -
+    C1      FACTOR FOR PELLET VOLUMETRIC SWELLING (IFSWEL=4)                        -
+    BU1     FACTOR FOR PELLET VOLUMETRIC SWELLING (IFSWEL=4)                      MWD/KGU
+    A2      FACTOR FOR PELLET VOLUMETRIC SWELLING (IFSWEL=4)                        -
+
+ -----------------------------------------
+  (8) OPTION FOR PELLET HOTPRESS MODEL
+ -----------------------------------------
+     BETAX      PELLET  HOTPRESS PARAMETER                                          -
+     IHOT       OPTION FOR PELLET HOTPRESS PARAMETER                                -
+
+ -----------------------------------------
+  (9) OPTION FOR PLASTIC MODEL
+ -----------------------------------------
+     IFY        OPTION FOR PELLET PLASTIC MODEL                                     -
+     ISTR       DETERMINES K OF CURVATURE OF YIELD STRESS IN ZIRCALOY            KG/MM*2
+
+ -----------------------------------------
+  (10) OPTION FOR IRRADIATION GROWTH MODEL
+ -----------------------------------------
+     ICAGRW     OPTION FOR FORMULA OF CLAD IRRADIATION GROWTH                       -
+     CATEXF     FACTOR FZ FOR AXIAL DIRECTION (ICAGRW = 1)                          -
+     COLDW      COLD WORK CW  (ICAGRW = 1)                                          -
+     RX         MAGNIFICATION ON CLAD IRRADIATION GROWTH RATE                       -
+
+ -----------------------------------------
+  (11) OPTION FOR FP GAS RELEASE MODEL
+ -----------------------------------------
+     IGASP      FISSION GAS RELEASE MODEL OPTION                                    -
+     IRIM       FISSION GAS RELEASE MODEL OPTION IN RIM                             -
+     IGAS       OPTION FOR TEMPERATURE ZONE MODEL                                   -
+     APORE      BUBBLE RADIUS IN INITIAL GRAINS                                    CM
+     BFCT       MAGNIFY RESOL. RATE B FROM INTRAGRANULAR BUBBLES TO MATRIX          -
+     IDCNST     OPTION FOR INTRINSIC DIFFUSION COEFFICIENT                          -
+     FACD       MAGNIFY EFFECTIVE INTRINSIC DIFFUSION COEFFICIENT                   -
+     ADDF       MAGNIFY RESOLUTION RATE FROM INTERGRANULE TO INSIDE                 -
+     FBSAT      MAGNIFY GAS SATURATION AT INTERGRANULE                              -
+     PSAT       MAXIMUM VALUE OF PRESSURE IN INTERGRANULAR BUBBLE                  PA
+     IPEXT      OPTION FOR PRESSURE PEXT TO INTERGRANULAR BUBBLE                    -
+     FGG        MAGNIFY GRAIN GROWTH CLEANUP RATIO                                  -
+     RFGFAC     MAGNIFY FP GAS RELEASE RATE BY RIM AREA                             -
+     FRMIN      MINIMUM RELEASE RATE OF FP GAS RELEASE RATE                         %
+     THEATF     INTERPOLATION PARAMETER USED IN GRAIN DIFFUSION EQUATION            -
+     FMULT      ADJUSTMENT FACTOR OF TIME STEP IN FP GAS RELEASE MODEL              -
+     NODEG      MESH NUMBER WITHIN GRAIN IN FP GAS RELEASE MODEL                    -
+     RREL       DIVIDE RATIO OF MESH WITHIN GRAIN IN GAS RELEASE MODEL              -
+     RB         WIDTH OF BOUNDARY LAYER (MESH FOR RESOLUTION)                      CM
+     OPORO      RATIO OF OPEN POROSITY                                              -
+     ALHOT      FACTOR MAGNIFING RELAXATION OF STRESS AFFECTING BUBBLE OUTER PRESS. -
+     APEXT      FACTOR MAGNIFING OF STRESS AFFECTING BUBBLE OUTER PRESS. (IPEXT=14) -
+     IFB        OPTION FOR GAS SATURATION AT INTERGRANULAR BUBBLE                   -
+     FBBAR      AVERAGE RATIO FOR GAS SATURATION VALUE AT BUBBLE (IFB=1)            -
+     FBSIG      STANDARD VARIATION FOR GAS SATURATION VALUE AT BUBBLE (IFB=1)       -
+     HERLS      FACTOR MAGNIFING OF HE GAS RELEASE RATE                             -
+     FACHE      FACTOR MAGNIFING OF HE GAS PRODUCE RATE                             -
+
+ -----------------------------------------
+  (12) OPTION FOR UO2 GRAIN GROWTH MODEL
+ -----------------------------------------
+     IGRAIN     OPTION FOR FORMULA IN UO2 GRAIN GROWTH                              -
+     GR         GRAIN SIZE                                                        MICRON
+     GRWF       MAGNIFY GRAIN GROWTH RATE                                           -
+     AG         FITTING PARAMETER ( GRAIN GROWTH SUPPRESSION TERM )                 -
+
+ -----------------------------------------
+  (13) OPTION FOR HE GAS RELEASE MODEL
+ -----------------------------------------
+     NTVHE      NUMBER OF TIME POINTS DETERMINED BY TVHE                            -
+     TVHE       TOTAL VALUE OF HE AT THE TIME N,SEGMENT I                          MOL
+     HERLS      FACTOR MAGNIFING OF HE GAS RELEASE RATE TO FP GAS RELEASE RATE      -
+
+ -----------------------------------------
+  (14) OPTION FOR GAS FLOW MODEL
+ -----------------------------------------
+    GMIN   MINIMUM GAP WIDTH BETWEEN PELLET AND CLAD IN GAS FLOW MODEL             CM
+    THG1   INTERPOLATION PARAMETER OF VOLUME ETC. USED IN AXIAL FP GAS FLOW MODEL   -
+    THG2   INTERPOL. PARAM. USED IN DIFFUSION CAL. OF AXIAL FP GAS FLOW MODEL       -
+    AMLMX2 MAXIMUM TRANSFER MOL NUMBER IN EACH SEGMENT                             MOL
+    AMLMX3 MAXIMUM VALUE OF FP GAS RELEASE IN EACH SEGMENT                         MOL
+    DTPR   RATIO OF VOL. OF FP GAS RELEASE TO THAT OF PLENUM GAS AT EACH TIME STEP  -
+    ETA    CONTROL PARAMETER (USED IN DETERMINING TIME STEP WIDTH)                  -
+
+ -----------------------------------------
+  (15) OPTION FOR CORROSION MODEL
+ -----------------------------------------
+     ICORRO     OPTION FOR CLAD WATERSIDE CORROSION MODEL                           -
+     FCORRO     ACCERELATION FACTOR OF OXIDE LAYER GROWTH RATE                      -
+     PBR        PILING-BEDWORTH RATIO OF ZIRCONIA                                   -
+     OXFAC      FACTOR MAGNIFING OXIDE LAYER THERMAL CONDUCTIVITY                   -
+     OXTH       THICKNESS OF INITIAL OXIDE LAYER ON OUTER SURFACE AT EACH SEGMENT MICRON
+     OXTHMX     THICKNESS OF MAXIMUM OXIDE LAYER ON OUTER SURFACE                 MICRON
+     CNOX       FACTOR MAGNIFING OXIDE THICKNESS                                    -
+     PX         RATIO OF RADIAL EXPANSION TO VOLUME EXPANSION OF ZIRCONIA           %
+
+ -----------------------------------------
+  (16) OPTION FOR GAP CONDUCTANCE MODEL
+ -----------------------------------------
+     IGAPCN     OPTION FOR GAP CONDUCTANCE MODEL                                    -
+     R1         ROUGHNESS OF PELLET SURFACE                                        CM
+     R2         ROUGHNESS OF CLAD SURFACE                                          CM
+     FACPC      FACTOR MAGNIFING CONTACT PRESSURE (IGAPCN = 0)                      -
+     FACS       FACTOR MAGNIFING CONTACT PRESSURE (IGAPCN = 4)                      -
+     PC0        STANDARD CONTACT PRESSURE (IGAPCN = 4)                             MPA
+     X          FITTING PARAMETER FOR CONTACT PRESSURE TERM (IGAPCN = 4)            -
+
+ -----------------------------------------
+  (17) OPTION FOR FILE CONDUCTANCE MODEL
+ -----------------------------------------
+     ISCNHAL    OPTIN FOR HALDEN SURFACE HEAT-TRANSFER COEFFICIENT                  -
+     AKFAC      MAGNIFY CLAD SURFACE THERMAL CONDUCTIVITY BY AKFAC                  -
+     ICFL       OPTION FOR COOLANT TEMPERATURE MODEL                                -
+     ICINT      OPTION FOR CHANNEL HEAT-TRANSFER COEFFICIENT (SET HISTORY NUMBER)   -
+     HX         CHANNEL SURFACE HEAT-TRANSFER COEFFICIENT                         W/CM2-K
+
+ -----------------------------------------
+  (18) OPTION FOR LOCAL FEM MODEL
+ -----------------------------------------
+     GAPLK      MAXIMAM GAP SIZE FOR GENERATING AXIAL FORCE                       MICRON
+     AY         TILTING VALUE                                                      MM
+
+ -----------------------------------------
+  (19) OPTION FOR CLADDING ANISOTROPY
+ -----------------------------------------
+     HO(2)      CLADDING ANISOTROPY PARAMETER                                       -
+     FO(2)      CLADDING ANISOTROPY PARAMETER                                       -
+     GO(2)      CLADDING ANISOTROPY PARAMETER                                       -
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+                                          NAMELIST PARAMETERS(3)
+                                         ------------------------
+          INPUT OPTION
+         ---------------
+    PARAMETER                      DESCRIPTION                             VALUE
+   -----------                    -------------                           -------
+ -------------------------------------------
+  (1) OPTION FOR OUTPUT/PLOTTING
+ -------------------------------------------
+
+     IPRINT         OUTPUT OPTION (=0;OFF ,=1;ON)
+                         = 1;INPUT DATA LIST
+                         = 2;FUEL DESIGN DATA
+                         = 3;MESH AND GEOMETRY DATA
+                         = 4;PARAMETERS LIST
+                         = 5;HISTORY DATA LIST
+                         = 6;THERMAL RESULTS        (EVERY TIME STEP)
+                         = 7;MECHANICAL RESULTS     (EVERY TIME STEP)
+                         = 8;THERMAL RESULTS        (THERMAL MODEL)
+                         = 9;MECHANICAL RESULTS     (THERMAL MODEL)
+                         =10;FP GAS RESULTS         (EVERY SEGMENT)
+                         =11;FP GAS RESULTS         (WHOLE ROD)
+                         =12;FUEL-CLAD DISPLACEMENT (MECHANICAL MODEL)
+                         =13;FUEL STRESS AND STRAIN (MECHANICAL MODEL)
+                         =14;CLAD STRESS AND STRAIN (MECHANICAL MODEL)
+                         =15;FINAL INFORMATION
+                         =16;THERMAL BEHAVIOR       (PLOTTER)
+                         =17;FP GAS BEHAVIOR        (PLOTTER)
+                         =18;MECHANICAL BEHAVIOR    (PLOTTER)
+                         =19;FUEL AND CLAD DISPLACEMENT (WHOLE ROD MODEL)
+                         =20;COOLANT CONDITION AND CORROSION(THERMAL MODEL)
+     IPHIS          OPTION FOR OUTPUT OF HISTORY POINTS (=0;ONLY APOOINTED POINTS ,=1;ALL POINTS)
+
+ -------------------------------------------
+  (2) OPTION FOR SEGMENT OUTPUT
+ -------------------------------------------
+     IWNOD          AXIAL SEGMENT PRINT AND PLOTTER OPTION (=0;OFF ,=1;ON)
+
+ --------------------------------------------------
+  (3) OPTION FOR OUTPUT OF THERMAL CALCULATION
+ --------------------------------------------------
+     IWTHE          THERMAL INFORMATION OUTPUT OPTION (=0;OFF ,=1;ON)
+                         =1;TEMPERATURE
+                         =2;GAP GAS
+                         =3;GRAIN RADIUS
+                         =4;INTRA. BUBBLE RADIUS
+                         =5;INTRA. BUBBLE DENSITY
+                         =6;DIFFUSION COEF.
+                         =7;EFFECT. DIF. COEF.
+                         =8;GRAIN ATOMS
+                         =9;BOUNDARY ATOMS
+                         =10;RELEASED ATOMS
+                         =11;GR. +BOU. ATOMS
+                         =12;GR. +BOU. +REL. ATOMS
+                         =13;PRODUCED ATOMS
+                         =14;FISSION GAS RELEASE
+                         =15;BOUNDARY DENSITY
+                         =16;BOUND. SAT. DENSITY
+                         =17;BOUNDARY PRESSURE
+                         =18;BURNUP
+                         =19;THERMAL INFORMATION
+                         =20;THERMAL GENERAL OUTPUT
+                         =21;SOLID MATRIX ATOMS
+                         =22;INTRA BUBBLE ATOMS
+                         =23;INTER. BUBBLE RADIUS
+                         =24;LIMIT INTER. BUBBLE RADIUS
+                         =25;COVER RATIO OVER GRAIN BOUND.
+                         =26;LIMIT COVER RATIO
+                         =27;BUBBLE DENS.OVER GRAIN BOUND.
+
+ --------------------------------------------------
+  (4) OPTION FOR OUTPUT OF LOCAL FEM CALCULATION
+ --------------------------------------------------
+     IWFEM      MECHANICAL INFORMATION OUTPUT CONTROL TABLE (=0;OFF ,=1;ON)
+                         = 1;RADIAL STRESS
+                         = 2;AXIAL STRESSES
+                         = 3;CIRCUMFERENTIAL STRESSES
+                         = 4;SHEAR STRESSES
+                         = 5;EQUIVALENT STRESSES
+                         = 6;YIELD STRESSES
+                         = 7;RADIAL TOTAL STRAINS
+                         = 8;AXIAL  TOTAL STRAINS
+                         = 9;CIRCUMFERENTIAL TOTAL STRAINS
+                         =10;SHEAR TOTAL STRAINS
+                         =11;EQUIVALENT PLASTIC STRAINS
+                         =12;RADIAL CREEP STRAINS
+                         =13;AXIAL CREEP STRAINS
+                         =14;CIRCUMFERENTIAL CREEP STRAINS
+                         =15;SHEAR CREEP STRAINS
+                         =16;EQUIVALENT CREEP STRAINS
+                         =17;RADIAL ELASTIC STRAINS
+                         =18;AXIAL  ELASTIC STRAINS
+                         =19;CIRCUMFERENTIAL ELASTIC STRAINS
+                         =20;SHEAR ELASTIC STRAINS
+                         =21;RADIAL THERMAL STRAINS
+                         =22;AXIAL  THERMAL STRAINS
+                         =23;STRAINS BY DENSIFICATION
+                         =24;STRAINS BY SWELLING
+                         =25;YOUNG'S MODULUS IN RADIAL DIRECTION
+                         =26;YOUNG'S MODULUS IN AXIAL  DIRECTION
+                         =27;YOUNG'S MODULUS IN CIRCU. DIRECTION
+                         =28;RADIAL CREEP STRAINS RATE
+                         =29;AXIAL CREEP STRAINS RATE
+                         =30;CIRCUM. CREEP STRAINS RATE
+                         =31;SHEAR CREEP STRAINS RATE
+                         =32;EQUI. CREEP STRAINS RATE
+                         =33;RADIAL STRAINS RATE
+                         =34;AXIAL STRAINS RATE
+                         =35;CIRCUMFERENTIAL STRAINS RATE
+                         =36;SHEAR STRAINS RATE
+                         =37;EQUIVALENT STRAINS RATE
+                         =38;EQUIVALENT STRAINS ENERGY
+                         =39;RADIAL DISTRIBUTION OF TEMP.
+                         =40;PELLET/CLADDING INTERACTION
+                         =41;PELLET/PELETTE INTERACTION
+                         =42;DISPLACEMENT OF NODAL POINTS
+                         =43;PCMI PLOT
+                         =44;CRACK/YIELD MAP
+                         =45;MECANICAL CALC. CONDITION
+
+ ------------------------------------------------------
+  (5) OPTION FOR OUTPUT OF  WHOLE ROD FEM CALCULATION
+ ------------------------------------------------------
+     IWROD      MECHANICAL INFORMATION OUTPUT CONTROL TABLE (=0;OFF ,=1;ON)
+                         = 1;RADIAL STRESS
+                         = 2;CIRCUM. STRESS
+                         = 3;AXIAL STRESS
+                         = 4;EQUI. STRESS
+                         = 5;YIELD STRESS
+                         = 6;RADIAL CREEP STRAIN
+                         = 7;CIRCUM. CREEP STRAIN
+                         = 8;AXIAL CREEP STRAIN
+                         = 9;EQUI. HARD STRAIN
+                         =10;EQUI. PLAS. STRAIN
+                         =11;SWELLING STRAIN
+                         =12;RADIAL TOTAL STRAIN
+                         =13;CIRCUM. TOTAL STRAIN
+                         =14;AXIAL TOTAL STRAIN
+                         =15;THERMAL STRAIN
+                         =16;ELEMENT TEMPERATURE
+                         =17;PRESSURE
+                         =18;NODE DISPLACEMENT
+                         =19;ELASTIC STRAIN
+                         =20;RELOCATION STRAIN
+
+ --------------------------------------------------
+  (6) OPTION FOR GETTING PLOTTER TAPE
+ --------------------------------------------------
+     IPLT    DRAW UP PLOTTER TAPE OPTIONS (=0;NO ,=1;YES)
+     IPLOPT  INTERVAL OF TIME STEP POINT FOR DRAW UP PLOTTER TAPE
+     ITIM(1) BEGINNING OF HISTORY NUMBER FOR DRAW UP PLOTTER TAPE
+     ITIM(2) ENDING OF HISTORY NUMBER FOR DRAW UP PLOTTER TAPE
+     IDNO    DRAW UP PLOTTER INDEX NUMBER TABLE (=0;NO ,=1;YES)
+
+
+

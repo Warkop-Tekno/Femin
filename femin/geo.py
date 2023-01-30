@@ -6,7 +6,8 @@ plenum = {}
 gap = {}
 
 
-def create_pellet(inner_dia, outer_dia, length, den, enrch, l_node, weight=0):
+def create_pellet(obj_segment, inner_dia, outer_dia, length, den, enrch, l_node, weight=0):
+	pellet['obj_seg'] = int(obj_segment)
 	pellet['id'] = inner_dia		# cm
 	pellet['od'] = outer_dia	 	# cm
 	pellet['l_pellet'] = length		# cm
