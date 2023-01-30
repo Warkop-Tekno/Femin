@@ -101,5 +101,5 @@ femin.load("data.h5")
 # print("Axial Segment Peak Factor\n", femin.ax_seg_pf)
 
 # Preview
-#femin.preview()
+femin.preview()
 femin.generate("tes_gen.txt")
