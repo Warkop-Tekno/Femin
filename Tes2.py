@@ -1,9 +1,8 @@
 import femin
-import subprocess
 
 ## Geometry
 node = 10   # Max 40
-obj_seg = 7
+obj_seg = 5
 
 # Pellet Specification
 inner_diameter_pellet = [0.0] * node # cm
@@ -94,5 +93,5 @@ femin.load("data.h5")
 
 # Preview and generate
 femin.preview()
-femin.generate("ft05.d")
-femin.run_femaxi6()
+femin.generate("Masukan.txt")
+femin.run_femaxi6("Masukan.txt", "Keluaran.txt")

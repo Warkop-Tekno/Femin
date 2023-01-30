@@ -1,6 +1,9 @@
 import webview
 import h5py
 import subprocess
+import shutil
+import os
+import stat
 from . import geo
 from . import hist_data
 from . import gen
@@ -62,8 +65,14 @@ def generate(file_name):
 	gen.gen_for_femaxi(file_name)
 
 
-def run_femaxi6():
+def run_femaxi6(InputName, OutputName):
+	dst = os.getcwd()
+	os.chmod(dst + "\FEMAXI6", stat.S_IWUSR)
+	shutil.copy(f"{InputName}", dst + "\FEMAXI6\\ft05.d")
+	os.chdir(dst + "\FEMAXI6")
 	batch_file = "FEM6.exe"
 	print("Simulating..........")
 	subprocess.run([batch_file])
+	shutil.copy("ft06.d", dst + f"\{OutputName}")
+	os.chdir(dst)
 	print("Finish")
