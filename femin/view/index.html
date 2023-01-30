@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+
+<div id="app">
+	<!-- Tab links -->
+	<div class="tab">
+	  <button class="tablinks active" onclick="openCity(event, 'Pelet')">Pelet</button>
+	  <button class="tablinks" onclick="openCity(event, 'Pin')">Pin</button>
+	  <button class="tablinks" onclick="openCity(event, 'History Data')">History Data</button>
+	</div>
+		
+	<!-- Tab content -->
+	<div id="Pelet" class="tabcontent">
+		<div class="row justify-content-center">
+			<div class="col-10">
+				<div class="row">
+					<div style="width:150">Berat total (gram)</div>
+						<div style="width: 460"><div class="row">
+							<div style="width: 150">: <a id="berat-pelet"></a></div>
+						</div></div>
+				</div>
+				<div class="row">
+					<div style="width:150">Dish (cm)</div>
+						<div style="width:460"><div class="row">
+							<div style="width:130">: Atas = <a id="top-dish"></a></div>
+							<div style="width:150">Bawah = <a id="bot-dish"></a></div>
+							<div style="width:180">Kedalaman = <a id="depth-dish"></a></div>
+						</div></div>
+				</div>
+				<div class="row">
+					<div style="width:150">Chamfer (cm)</div>
+						<div style="width:460"><div class="row">
+							<div style="width:130">: Lebar = <a id="width-chamf"></a></div>
+							<div style="width:180">Kedalaman = <a id="depth-chamf"></a></div>
+						</div></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row justify-content-center">
+			<div class="col-10">
+				<table id="london-tabel" class="styled-table">
+				<caption>Spesifikasi Pelet</caption>
+				<tr><th rowspan="2">Node<th colspan="2" style="width: 140;">Diameter (cm)<th rowspan="2" style="width: 50;">Panjang (cm)<th colspan="2">Shape
+				<th rowspan="2" style="width: 100;">U-235 Ench.<th rowspan="2">Densitas<th rowspan="2" style="width: 50;">Panjang Node (cm)
+				<tr><th>Dalam<th>Luar<th>Chamf<th>Dish
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div id="Pin" class="tabcontent">
+		<div class="row justify-content-center">
+			<div class="col-10">
+			<fieldset class="fieldset">
+			<legend class="legend">Kelongsong</legend>
+				<div style="width: 160"><div class="row">
+					<div style="width:130">Material</div>
+					<div style="width:140"> inner diameter</div>
+					<div style="width:140"> outer diameter</div>
+				</div></div>
+			</fieldset>
+			<fieldset class="fieldset">
+			<legend class="legend">Gap</legend>
+			<div style="width: 160"><div class="row">
+				<div style="width:130">Pressure </div>
+				<div style="width:140">He </div>
+				<div style="width:140">N2 </div>
+				<div style="width:140">Kr </div>
+				<div style="width:140">Xe </div>
+			</div></div>
+			</fieldset>
+			<fieldset class="fieldset">
+			<legend class="legend">Plenum</legend>
+			<div style="width: 160"><div class="row">
+				<div style="width:130">Upper Volume </div>
+				<div style="width:140">Lower Volume </div>
+			</div></div>
+			</fieldset>
+			</div>
+		</div>
+	</div>
+
+	<div id="History Data" class="tabcontent">
+		<div class="row justify-content-center">
+			<div class="col-10">
+				<table id="hist-table" class="styled-table">
+				<caption>History Data</caption>
+				<tr><th style="width: 120">Time<th style="width: 120">Burnup
+					<th style="width: 120">Linier Heat Rate<th style="width: 120">Coolant Temperature
+					<th style="width: 120">Coolant Pressure<th style="width: 120">Fast Neutron Flux
+					<th style="width: 120">Coolant Velocity<th style="width: 120">History Option
+					<th style="width: 120">Print Option<th style="width: 120">SS/US Option
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="script.js"></script>
+<script src="load.js"></script>
+<script>
+
+document.getElementById("berat-pelet").innerHTML = pellet.weight
+document.getElementById("top-dish").innerHTML = pellet.dish_val[0]
+document.getElementById("bot-dish").innerHTML = pellet.dish_val[2]
+document.getElementById("depth-dish").innerHTML = pellet.dish_val[1]
+document.getElementById("width-chamf").innerHTML = pellet.chamf_val[0]
+document.getElementById("depth-chamf").innerHTML = pellet.chamf_val[1]
+tabel = document.getElementById("london-tabel");
+isi_tabel(pellet, pellet_keys, tabel);
+
+tabel_hist = document.getElementById("hist-table");
+hasiltakliat = tableHist(hist, hist_keys, ax, ax_keys, tabel_hist);
+console.log(hasiltakliat)
+/*node = document.createElement("h3");
+textnode = document.createTextNode("Pelet");
+node.appendChild(textnode);
+document.getElementById("Pelet").appendChild(node);*/
+</script>
