@@ -142,11 +142,11 @@ if (clad.mat == 0){
 }
 document.getElementById("clad-id").innerHTML = clad.id
 document.getElementById("clad-od").innerHTML = clad.od
-document.getElementById("gap-press").innerHTML = gap.init_gas_pressure
-document.getElementById("He-comp").innerHTML = gap.init_He_comp * 100
-document.getElementById("N2-comp").innerHTML = gap.init_N2_comp * 100
-document.getElementById("Kr-comp").innerHTML = gap.init_Kr_comp * 100
-document.getElementById("Xe-comp").innerHTML = gap.init_Xe_comp * 100
+document.getElementById("gap-press").innerHTML = gap.pressure
+document.getElementById("He-comp").innerHTML = gap.He * 100
+document.getElementById("N2-comp").innerHTML = gap.N2 * 100
+document.getElementById("Kr-comp").innerHTML = gap.Kr * 100
+document.getElementById("Xe-comp").innerHTML = gap.Xe * 100
 document.getElementById("up-vol").innerHTML = plenum.up_vol
 document.getElementById("low-vol").innerHTML = plenum.low_vol
 

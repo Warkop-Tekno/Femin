@@ -1,0 +1,3 @@
+Tes 1 "Normal Run"		: Success
+Tes 2 "Multiple Random Run"	: Masih error beberapa
+Tes 3 "Read Encrypted"		: Bagian Gap view masih error ketika membaca dari file enskripsi(solved)
