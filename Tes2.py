@@ -127,8 +127,8 @@ for vardisr in distburnup:
 
     femin.preview()
     init = tms.time()
-    femin.generate(f"Input {Iter}.txt")
-    femin.run_femaxi6(f"Input {Iter}.txt", f"Output {Iter}.txt")
+    femin.generate(f"Tes 2 Input {Iter}.txt")
+    femin.run_femaxi6(f"Tes 2 Input {Iter}.txt", f"Tes 2 Output {Iter}.txt")
     end = tms.time()
     print(f"Calculated Time {Iter} ({vardisr})= {end - init}")
     del burnup, lhr, cool_velocity, cool_pressure, cool_temp, IP, IT, IS
