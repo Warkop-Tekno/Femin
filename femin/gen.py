@@ -3,6 +3,7 @@ from . import hist_data
 from . import string
 
 
+
 def gfp_pellet():
     # Pellet
     tmp_key = 'pellet_keys = ["id", "od", "l_pellet", "chamf", "dish", "enrch", "den", "l_node"]\n'
@@ -14,7 +15,13 @@ def gfp_pellet():
                 tmp_val += f'"{string.rounding(val)}", '
             tmp_val += "],\n"
         except TypeError:
-            tmp_val += f'"{geo.pellet["weight"]}"], \n'
+            if key == "obj_seg":
+                tmp_val += f'"{geo.pellet["obj_seg"]}"], \n'
+            else:
+                try:
+                    tmp_val += f'"{geo.pellet["weight"]}"], \n'
+                except KeyError:
+                    tmp_val += f'""],\n'
 
     # Chamfer
     tmp_val += '\t"chamf": ['
@@ -141,9 +148,15 @@ def text(data, key_var, ax, point):
 
 
 def gff_pellet():
+    tmp_text = ''
     jml_node = len(geo.pellet["od"])
-    obj = 6 ### input
-    tmp_text = string.fill_char([[jml_node, 10], [obj, 10]]) + "\n"
+    # Default Set
+    default = open("femin\default_set.txt", 'r')
+    default_set = default.readlines()
+    for line in default_set:
+        tmp_text += line
+    tmp_text += '\n'
+    tmp_text += string.fill_char([[jml_node, 10], [geo.pellet["obj_seg"], 10]]) + "\n"
     tmp_text += string.fill_char([[geo.clad["mat"], 10],
                                   [geo.clad["id"], 10],
                                   [geo.clad["od"], 10]]) + "\n"
@@ -171,15 +184,24 @@ def gff_pellet():
     if len(geo.chamfer) > 0:
         tmp_text += string.fill_char([[geo.chamfer["wid"], 10, "F"],
                                       [geo.chamfer["dep"], 10, "F"]]) + "\n"
-
-    tmp_text += string.fill_char([[geo.plenum["up_vol"], 10, "F"],
-                                  [geo.gap["init_gas_pressure"], 10, "F"],
-                                  [geo.gap["init_He_comp"], 10, "F"],
-                                  [geo.gap["init_N2_comp"], 10, "F"],
-                                  [geo.gap["init_Kr_comp"], 10, "F"],
-                                  [geo.gap["init_Xe_comp"], 10, "F"],
-                                  [geo.pellet["weight"], 10, "F"],
-                                  [geo.plenum["low_vol"], 10, "F"]]) + "\n"
+    try:
+        tmp_text += string.fill_char([[geo.plenum["up_vol"], 10, "F"],
+                                      [geo.gap["init_gas_pressure"], 10, "F"],
+                                      [geo.gap["init_He_comp"], 10, "F"],
+                                      [geo.gap["init_N2_comp"], 10, "F"],
+                                      [geo.gap["init_Kr_comp"], 10, "F"],
+                                      [geo.gap["init_Xe_comp"], 10, "F"],
+                                      [geo.pellet["weight"], 10, "F"],
+                                      [geo.plenum["low_vol"], 10, "F"]]) + "\n"
+    except KeyError:
+        tmp_text += string.fill_char([[geo.plenum["up_vol"], 10, "F"],
+                                      [geo.gap["init_gas_pressure"], 10, "F"],
+                                      [geo.gap["init_He_comp"], 10, "F"],
+                                      [geo.gap["init_N2_comp"], 10, "F"],
+                                      [geo.gap["init_Kr_comp"], 10, "F"],
+                                      [geo.gap["init_Xe_comp"], 10, "F"],
+                                      [" ", 10, "F"],
+                                      [geo.plenum["low_vol"], 10, "F"]]) + "\n"
 
     point = 0
     for key in hist_data.pwr_hist:

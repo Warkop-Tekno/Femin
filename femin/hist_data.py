@@ -1,9 +1,11 @@
 pwr_hist = {}
 ax_seg_pf = {}
 
+
 def looping(var, data, name):
     for item in range(len(data)):
         var[name+'_'+str(item+1)] = data[item]
+
 
 def create_pf(pf_list):
     looping(ax_seg_pf, pf_list, 'ax_seg')

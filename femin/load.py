@@ -19,6 +19,8 @@ def load(name):
             geo.plenum[key[7:]] = np.array(geo_grp.get(key)).tolist()
         elif key[0:7] == 'chamfer':
             geo.chamfer[key[8:]] = np.array(geo_grp.get(key)).tolist()
+        elif key[0:3] == 'gap':
+            geo.gap[key[4:]] = np.array(geo_grp.get(key)).tolist()
 
     hist_grp = data.get("hist_data")
     for key in list(hist_grp):

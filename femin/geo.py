@@ -6,7 +6,8 @@ plenum = {}
 gap = {}
 
 
-def create_pellet(inner_dia, outer_dia, length, den, enrch, l_node, weight=0):
+def create_pellet(obj_segment, inner_dia, outer_dia, length, den, enrch, l_node, weight=0):
+	pellet['obj_seg'] = int(obj_segment)
 	pellet['id'] = inner_dia		# cm
 	pellet['od'] = outer_dia	 	# cm
 	pellet['l_pellet'] = length		# cm
@@ -40,11 +41,11 @@ def create_plenum(up_vol, low_vol):
 
 
 def create_gap(init_gas_pressure, comp_He, comp_N2, comp_Kr, comp_Xe):
-	gap['init_gas_pressure'] = init_gas_pressure	 # MPa
-	gap['init_He_comp'] = comp_He
-	gap['init_N2_comp'] = comp_N2
-	gap['init_Kr_comp'] = comp_Kr
-	gap['init_Xe_comp'] = comp_Xe
+	gap['pressure'] = init_gas_pressure	 # MPa
+	gap['He'] = comp_He
+	gap['N2'] = comp_N2
+	gap['Kr'] = comp_Kr
+	gap['Xe'] = comp_Xe
 
 
 def get_pellet():

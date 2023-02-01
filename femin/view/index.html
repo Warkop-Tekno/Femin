@@ -5,8 +5,9 @@
 	<!-- Tab links -->
 	<div class="tab">
 	  <button class="tablinks active" onclick="openCity(event, 'Pelet')">Pelet</button>
-	  <button class="tablinks" onclick="openCity(event, 'Pin')">Pin</button>
-	  <button class="tablinks" onclick="openCity(event, 'History Data')">History Data</button>
+	  <button class="tablinks active" onclick="openCity(event, 'Pin')">Pin</button>
+	  <button class="tablinks active" onclick="openCity(event, 'History Data')">History Data</button>
+	  <button class="tanlinks active" onclick="openCity(event, 'Power Profile')">Power Profile</button>
 	</div>
 		
 	<!-- Tab content -->
@@ -51,30 +52,40 @@
 	
 	<div id="Pin" class="tabcontent">
 		<div class="row justify-content-center">
-			<div class="col-10">
+			<div class="col-4">
 			<fieldset class="fieldset">
 			<legend class="legend">Kelongsong</legend>
-				<div style="width: 160"><div class="row">
-					<div style="width:130">Material</div>
-					<div style="width:140"> inner diameter</div>
-					<div style="width:140"> outer diameter</div>
+				<div style="width: 400"><div class="row">
+					<div style="width:200">Material</div>
+					<div style="width:200"><a id="clad-mat"></a></div>
+					<div style="width:200">Inner Diameter</div>
+					<div style="width:200"><a id="clad-id"></a> cm</div>
+					<div style="width:200">Outer Diameter</div>
+					<div style="width:200"><a id="clad-od"></a> cm</div>
 				</div></div>
 			</fieldset>
 			<fieldset class="fieldset">
 			<legend class="legend">Gap</legend>
-			<div style="width: 160"><div class="row">
-				<div style="width:130">Pressure </div>
-				<div style="width:140">He </div>
-				<div style="width:140">N2 </div>
-				<div style="width:140">Kr </div>
-				<div style="width:140">Xe </div>
+			<div style="width: 400"><div class="row">
+				<div style="width:200">Pressure</div>
+				<div style="width:200"><a id="gap-press"></a> MPa</div>
+				<div style="width:200">He</div>
+				<div style="width:200"><a id="He-comp"></a> %</div>
+				<div style="width:200">N2</div>
+				<div style="width:200"><a id="N2-comp"></a> %</div>
+				<div style="width:200">Kr</div>
+				<div style="width:200"><a id="Kr-comp"></a> %</div>
+				<div style="width:200">Xe</div>
+				<div style="width:200"><a id="Xe-comp"></a> %</div>
 			</div></div>
 			</fieldset>
 			<fieldset class="fieldset">
 			<legend class="legend">Plenum</legend>
-			<div style="width: 160"><div class="row">
-				<div style="width:130">Upper Volume </div>
-				<div style="width:140">Lower Volume </div>
+			<div style="width: 400"><div class="row">
+				<div style="width:200">Upper Volume</div>
+				<div style="width:200"><a id="up-vol"></a> cm<sup>3</sup></div>
+				<div style="width:200">Lower Volume</div>
+				<div style="width:200"><a id="low-vol"></a> cm<sup>3</sup></div>
 			</div></div>
 			</fieldset>
 			</div>
@@ -95,6 +106,20 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="Power Profile" class="tabcontent">
+		<div class="row justify-content-center">
+			<div class="col-11">
+				<table id="pwr-profile" class="styled-table">
+					<caption>Relative Power Profile</caption>
+					<tr><th rowspan = "2" style="width:80;height:60px;">No</th>
+						<th colspan = "3" style="width:100;height:60px;">Relative Power Profile of Axial Segment</th>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</div>
 </div>
 
 <script src="script.js"></script>
@@ -110,11 +135,24 @@ document.getElementById("depth-chamf").innerHTML = pellet.chamf_val[1]
 tabel = document.getElementById("london-tabel");
 isi_tabel(pellet, pellet_keys, tabel);
 
+if (clad.mat == 0){
+	document.getElementById("clad-mat").innerHTML = "RA Material"
+}else{
+	document.getElementById("clad-mat").innerHTML = "SR Material"
+}
+document.getElementById("clad-id").innerHTML = clad.id
+document.getElementById("clad-od").innerHTML = clad.od
+document.getElementById("gap-press").innerHTML = gap.pressure
+document.getElementById("He-comp").innerHTML = gap.He * 100
+document.getElementById("N2-comp").innerHTML = gap.N2 * 100
+document.getElementById("Kr-comp").innerHTML = gap.Kr * 100
+document.getElementById("Xe-comp").innerHTML = gap.Xe * 100
+document.getElementById("up-vol").innerHTML = plenum.up_vol
+document.getElementById("low-vol").innerHTML = plenum.low_vol
+
 tabel_hist = document.getElementById("hist-table");
-hasiltakliat = tableHist(hist, hist_keys, ax, ax_keys, tabel_hist);
-console.log(hasiltakliat)
-/*node = document.createElement("h3");
-textnode = document.createTextNode("Pelet");
-node.appendChild(textnode);
-document.getElementById("Pelet").appendChild(node);*/
+tableHist(hist, hist_keys, ax, ax_keys, tabel_hist);
+
+pwr_profile = document.getElementById("pwr-profile");
+table_pwrprofile(ax_keys, ax, pwr_profile);
 </script>
