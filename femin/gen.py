@@ -186,20 +186,20 @@ def gff_pellet():
                                       [geo.chamfer["dep"], 10, "F"]]) + "\n"
     try:
         tmp_text += string.fill_char([[geo.plenum["up_vol"], 10, "F"],
-                                      [geo.gap["init_gas_pressure"], 10, "F"],
-                                      [geo.gap["init_He_comp"], 10, "F"],
-                                      [geo.gap["init_N2_comp"], 10, "F"],
-                                      [geo.gap["init_Kr_comp"], 10, "F"],
-                                      [geo.gap["init_Xe_comp"], 10, "F"],
+                                      [geo.gap["pressure"], 10, "F"],
+                                      [geo.gap["He"], 10, "F"],
+                                      [geo.gap["N2"], 10, "F"],
+                                      [geo.gap["Kr"], 10, "F"],
+                                      [geo.gap["Xe"], 10, "F"],
                                       [geo.pellet["weight"], 10, "F"],
                                       [geo.plenum["low_vol"], 10, "F"]]) + "\n"
     except KeyError:
         tmp_text += string.fill_char([[geo.plenum["up_vol"], 10, "F"],
-                                      [geo.gap["init_gas_pressure"], 10, "F"],
-                                      [geo.gap["init_He_comp"], 10, "F"],
-                                      [geo.gap["init_N2_comp"], 10, "F"],
-                                      [geo.gap["init_Kr_comp"], 10, "F"],
-                                      [geo.gap["init_Xe_comp"], 10, "F"],
+                                      [geo.gap["pressure"], 10, "F"],
+                                      [geo.gap["He"], 10, "F"],
+                                      [geo.gap["N2"], 10, "F"],
+                                      [geo.gap["Kr"], 10, "F"],
+                                      [geo.gap["Xe"], 10, "F"],
                                       [" ", 10, "F"],
                                       [geo.plenum["low_vol"], 10, "F"]]) + "\n"
 

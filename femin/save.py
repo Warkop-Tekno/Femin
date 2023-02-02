@@ -57,7 +57,8 @@ def preview():
 	#print(__name__)
 	if __name__ == 'femin.save':
 		# Create a standard webview window
-		window = webview.create_window('Simple browser', 'femin/view/index.html', easy_drag=False, text_select=True, resizable=False, min_size=(1200, 600))
+		dst = os.getcwd()
+		webview.create_window('Simple browser', dst + "\\femin\\view\\index.html", easy_drag=False, text_select=True, resizable=False, min_size=(1200, 600))
 		webview.start()
 
 
