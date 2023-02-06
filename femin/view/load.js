@@ -20,12 +20,12 @@ clad = {
 }
 plenum_key = ["up_vol","low_vol",]
 plenum = {
-	"up_vol": [5.0],
-	"low_vol": [5.0],
+	"up_vol": [5],
+	"low_vol": [5],
 }
 gap_key = ["pressure","He","N2","Kr","Xe",]
 gap = {
-	"pressure": [1.0],
+	"pressure": [1],
 	"He": [0.94],
 	"N2": [0.02],
 	"Kr": [0.03],
