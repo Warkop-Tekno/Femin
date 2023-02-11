@@ -134,12 +134,16 @@ def gen_for_preview():
 def text(data, key_var, ax, point):
     try:
         var_list = data[key_var + str(ax + 1)][point]
-        if point > 0:
-            if var_list == data[key_var + str(ax + 1)][point - 1]:
+        if key_var == "iPrint opt_":
+            if var_list == 0:
                 var_list = " "
-        if ax > 0:
-            if var_list == data[key_var + str(ax)][point]:
-                var_list = " "
+        else:
+            if point > 0:
+                if var_list == data[key_var + str(ax + 1)][point - 1]:
+                    var_list = " "
+            if ax > 0:
+                if var_list == data[key_var + str(ax)][point]:
+                    var_list = " "
     except KeyError:
         var_list = " "
     except IndexError:
